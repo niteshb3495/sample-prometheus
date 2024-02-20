@@ -11,6 +11,6 @@ docker-compose up -d
 
 | Application | URL to access |
 | ------ | ------ |
-| Python Application | [http://localhost:8080][PlDb] |
-| Python Application Metrics | [http://localhost:8080/metrics][PlGh] |
-| Prometheus | [http://localhost:9090][PlGh] |
+| Python Application | [http://localhost:8080] |
+| Python Application Metrics | [http://localhost:8080/metrics] |
+| Prometheus | [http://localhost:9090] |
