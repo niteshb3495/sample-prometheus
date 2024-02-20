@@ -1,0 +1,68 @@
+
+# Your alerting rules should be defined separately, not within the main configuration.
+# Define your rules here.
+groups:
+- name: example.rules
+  rules:
+    - alert: HighVirtualMemoryUsage
+      expr: process_virtual_memory_bytes > 2e8
+      for: 5m
+      labels:
+        severity: warning
+      annotations:
+        summary: "High virtual memory usage detected"
+        description: "The process is using more virtual memory than expected."
+
+    - alert: HighResidentMemoryUsage
+      expr: process_resident_memory_bytes > 3e7
+      for: 5m
+      labels:
+        severity: warning
+      annotations:
+        summary: "High resident memory usage detected"
+        description: "The process is using more resident memory than expected."
+
+    - alert: HighCPULoad
+      expr: process_cpu_seconds_total > 0.1
+      for: 5m
+      labels:
+        severity: warning
+      annotations:
+        summary: "High CPU load detected"
+        description: "The process is using more CPU than expected."
+
+    - alert: HighGCObjectsCollected
+      expr: sum by (generation) (python_gc_objects_collected_total) > 100
+      for: 5m
+      labels:
+        severity: warning
+      annotations:
+        summary: "High number of objects collected during garbage collection"
+        description: "A large number of objects are being collected during garbage collection."
+
+    - alert: HighGCObjectsUncollectable
+      expr: sum by (generation) (python_gc_objects_uncollectable_total) > 0
+      for: 5m
+      labels:
+        severity: warning
+      annotations:
+        summary: "Uncollectable objects found during garbage collection"
+        description: "Uncollectable objects have been found during garbage collection."
+
+    - alert: HighGCCollections
+      expr: sum by (generation) (python_gc_collections_total) > 100
+      for: 5m
+      labels:
+        severity: warning
+      annotations:
+        summary: "High number of garbage collection cycles"
+        description: "A large number of garbage collection cycles have occurred."
+
+    - alert: HighRequestCount
+      expr: request_count_total > 100
+      for: 5m
+      labels:
+        severity: warning
+      annotations:
+        summary: "High request count detected"
+        description: "The application has received a high number of requests."

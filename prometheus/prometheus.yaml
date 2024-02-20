@@ -6,3 +6,12 @@ scrape_configs:
     static_configs:
       - targets: ['python-app:8080']
     metrics_path: /metrics
+
+rule_files:
+  - 'alertmanager.rules'
+
+alerting:
+  alertmanagers:
+    - static_configs:
+        - targets:
+            - 'alertmanager:9093'  # Assuming Alertmanager is running on the same machine
