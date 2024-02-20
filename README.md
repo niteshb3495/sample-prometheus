@@ -14,3 +14,4 @@ docker-compose up -d
 | Python Application | [http://localhost:8080] |
 | Python Application Metrics | [http://localhost:8080/metrics] |
 | Prometheus | [http://localhost:9090] |
+| Alertmanager | [http://localhost:9093] |

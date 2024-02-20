@@ -18,3 +18,11 @@ services:
     command:
       - '--config.file=/etc/prometheus/prometheus.yaml'
 
+  alertmanager:
+    image: prom/alertmanager
+    ports:
+      - "9093:9093"
+    volumes:
+      - ./alertmanager:/etc/alertmanager
+    command:
+      - '--config.file=/etc/alertmanager/config.yaml'

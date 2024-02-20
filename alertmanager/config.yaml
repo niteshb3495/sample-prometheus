@@ -1,0 +1,19 @@
+# NOTE: This file is used for slack notifications
+
+global:
+  resolve_timeout: 5m
+  slack_api_url: 'https://hooks.slack.com/services/your/slack/webhook/url'
+
+route:
+  group_by: ['alertname']
+  group_wait: 10s
+  group_interval: 5m
+  repeat_interval: 3h
+  receiver: 'slack_notifications'
+
+receivers:
+- name: 'slack_notifications'
+  slack_configs:
+  - channel: '#slack_channel_name'
+    username: 'Alertmanager'
+    send_resolved: true
